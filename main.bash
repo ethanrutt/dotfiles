@@ -118,4 +118,6 @@ if [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/yay/yay_setup.bash"
 fi
 
-
+if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
+    source "$DOTS_DIR/groups/awesome/awesome_setup.bash"
+fi

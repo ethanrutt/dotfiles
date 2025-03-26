@@ -1,3 +1,6 @@
 [submodule "groups/nvim/files/neovim-config"]
 	path = groups/nvim/files/neovim-config
 	url = git@github.com:ethanrutt/neovim-config.git
+[submodule "groups/awesome/files/awesome-config"]
+	path = groups/awesome/files/awesome-config
+	url = git@github.com:ethanrutt/awesome-config.git
