@@ -97,7 +97,7 @@ esac
 
 if ! [[ -d "$DOTS_DIR" ]]; then
     echo -e "${BLUE}cloning repository${ENDCOLOR}"
-    git clone --recurse-submodules --quiet git@github.com:ethanrutt/dots_rewrite.git "$DOTS_DIR"
+    git clone --recurse-submodules --quiet git@github.com:ethanrutt/dotfiles.git "$DOTS_DIR"
 else
     echo -e "${BLUE}updating repository${ENDCOLOR}"
     git -C "$DOTS_DIR" pull --recurse-submodules --quiet
