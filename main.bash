@@ -113,3 +113,9 @@ source "$DOTS_DIR/groups/bash/bash_setup.bash"
 # nvim
 source "$DOTS_DIR/groups/nvm/nvm_setup.bash"
 source "$DOTS_DIR/groups/nvim/nvim_setup.bash"
+
+if [[ "$ID" == "arch" ]]; then
+    source "$DOTS_DIR/groups/yay/yay_setup.bash"
+fi
+
+

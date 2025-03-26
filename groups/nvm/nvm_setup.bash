@@ -26,7 +26,7 @@ echo -e "${YELLOW}installing nvm version:${ENDCOLOR} ${CYAN}${nvm_latest_version
 PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_latest_version}/install.sh | bash"
 source "$HOME/.nvm/nvm.sh"
 
-if ! command -v nvm; then
+if ! command -v nvm >/dev/null 2>&1; then
     echo -e "${RED}nvm install failed${ENDCOLOR}"
     exit 1
 fi
