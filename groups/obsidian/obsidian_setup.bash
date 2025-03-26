@@ -8,6 +8,6 @@ echo -e "\n\n${MAGENTA}obsidian setup${ENDCOLOR}"
 install_with_package_manager pacman obsidian
 
 mkdir -p "$HOME/Documents"
-link_file "$DOTS_DIR/groups/obsidian/files/obsidian_vaults" "$HOME/Documents"
+link_file "$DOTS_DIR/groups/obsidian/files/obsidian_vaults" "$HOME/Documents/obsidian_vaults"
 
 echo -e "${GREEN}obsidian setup complete${ENDCOLOR}"
