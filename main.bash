@@ -13,35 +13,40 @@ CYAN="\e[36m" # variables
 ENDCOLOR="\e[0m"
 
 source /etc/os-release
-echo -e "${BLUE}Loading Setup for detected OS:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR}"
+echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
+        echo -e "${BLUE}update all packages${ENDCOLOR}"
+        sudo apt update && sudo apt upgrade
         if ! dpkg -s git >/dev/null 2>&1; then
-            echo "${BLUE}Installing git${ENDCOLOR}"
+            echo -e "${BLUE}Installing git${ENDCOLOR}"
             sudo apt-get install -y git
         fi
     ;;
     arch)
-        echo -e "${BLUE}Setting Locale${ENDCOLOR}"
+        echo -e "${BLUE}update all packages${ENDCOLOR}"
+        sudo pacman -Syu
+
+        echo -e "${BLUE}setting locale${ENDCOLOR}"
         sudo localectl set-locale LANG=en_US.UTF-8
 
         if ! pacman -Q git >/dev/null 2>&1; then
-            echo "${BLUE}Installing git${ENDCOLOR}"
+            echo -e "${BLUE}installing git${ENDCOLOR}"
             sudo pacman -S --noconfirm git
         fi
     ;;
   *)
-      echo -e "${RED}Unsupported OS${ENDCOLOR}"
+      echo -e "${RED}unsupported os${ENDCOLOR}"
       exit 1
   ;;
 esac
 
 # FIXME: uncomment
 # if ! [[ -d "$DOTS_DIR" ]]; then
-#     echo -e "${BLUE}Cloning repository${ENDCOLOR}"
+#     echo -e "${BLUE}cloning repository${ENDCOLOR}"
 #     git clone --recurse-submodules git@github.com:ethanrutt/dots.git "$DOTS_DIR"
 # else
-#     echo -e "${BLUE}Updating repository${ENDCOLOR}"
+#     echo -e "${BLUE}updating repository${ENDCOLOR}"
 #     git -C "$DOTS_DIR" pull --recurse-submodules --quiet
 # fi
 
@@ -53,4 +58,5 @@ fi
 source "$DOTS_DIR/groups/bat/bat_setup.bash"
 source "$DOTS_DIR/groups/eza/eza_setup.bash"
 source "$DOTS_DIR/groups/tmux/tmux_setup.bash"
+source "$DOTS_DIR/groups/fd/fd_setup.bash"
 source "$DOTS_DIR/groups/bash/bash_setup.bash"
