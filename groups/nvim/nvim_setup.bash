@@ -11,6 +11,7 @@ case $ID in
         install_with_package_manager apt cmake
         install_with_package_manager apt curl
         install_with_package_manager apt wget
+        install_with_package_manager apt zip
         install_with_package_manager apt unzip
         install_with_package_manager apt ripgrep
         install_with_package_manager apt gcc
@@ -28,6 +29,7 @@ case $ID in
         install_with_package_manager pacman cmake
         install_with_package_manager pacman curl
         install_with_package_manager pacman wget
+        install_with_package_manager pacman zip
         install_with_package_manager pacman unzip
         install_with_package_manager pacman ripgrep
         install_with_package_manager pacman gcc
