@@ -132,7 +132,8 @@ if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/alacritty/alacritty_setup.bash"
     source "$DOTS_DIR/groups/picom/picom_setup.bash"
     source "$DOTS_DIR/groups/obsidian/obsidian_setup.bash"
-    # pulseaudio here
+    # pulseaudio here and refactor pavucontrol into pulseaudio
     source "$DOTS_DIR/groups/pavucontrol/pavucontrol_setup.bash"
     source "$DOTS_DIR/groups/bluetooth/bluetooth_setup.bash"
+    source "$DOTS_DIR/groups/wallpapers/wallpapers_setup.bash"
 fi
