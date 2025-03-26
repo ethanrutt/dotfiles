@@ -25,15 +25,33 @@ case $ID in
         sudo apt-get install -y neovim
     ;;
     arch)
-        sudo pacman -S --noconfirm cmake
-        sudo pacman -S --noconfirm curl
-        sudo pacman -S --noconfirm wget
-        sudo pacman -S --noconfirm unzip
-        sudo pacman -S --noconfirm ripgrep
-        sudo pacman -S --noconfirm gcc
-        sudo pacman -S --noconfirm python
-        sudo pacman -S --noconfirm jdk21-openjdk
-        sudo pacman -S --noconfirm neovim
+        if ! pacman -Q cmake >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm cmake
+        fi
+        if ! pacman -Q curl >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm curl
+        fi
+        if ! pacman -Q wget >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm wget
+        fi
+        if ! pacman -Q unzip >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm unzip
+        fi
+        if ! pacman -Q ripgrep >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm ripgrep
+        fi
+        if ! pacman -Q gcc >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm gcc
+        fi
+        if ! pacman -Q python >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm python
+        fi
+        if ! pacman -Q jdk21-openjdk >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm jdk21-openjdk
+        fi
+        if ! pacman -Q neovim >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm neovim
+        fi
     ;;
 esac
 
