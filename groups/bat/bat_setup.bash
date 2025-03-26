@@ -23,7 +23,7 @@ if [[ -d "$HOME/.config/bat" ]] || [[ -L "$HOME/.config/bat" ]]; then
 fi
 
 echo -e "${YELLOW}linking new bat config${ENDCOLOR}"
-ln -s "$DOTS_DIR/groups/bat/files" "$HOME/.config/bat"
+ln -s "$DOTS_DIR/groups/bat/files/bat" "$HOME/.config/bat"
 
 if command -v bat >/dev/null 2>&1; then
     echo -e "${YELLOW}building bat cache${ENDCOLOR}"
