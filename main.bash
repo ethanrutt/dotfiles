@@ -120,6 +120,8 @@ fi
 
 if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/awesome/awesome_setup.bash"
+    source "$DOTS_DIR/groups/alacritty/alacritty_setup.bash"
+    source "$DOTS_DIR/groups/obsidian/obsidian_setup.bash"
     # pulseaudio here
     source "$DOTS_DIR/groups/bluetooth/bluetooth_setup.bash"
 fi

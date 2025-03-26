@@ -4,3 +4,6 @@
 [submodule "groups/awesome/files/awesome-config"]
 	path = groups/awesome/files/awesome-config
 	url = git@github.com:ethanrutt/awesome-config.git
+[submodule "groups/obsidian/files/obsidian_vaults"]
+	path = groups/obsidian/files/obsidian_vaults
+	url = git@github.com:ethanrutt/obsidian_vaults.git
