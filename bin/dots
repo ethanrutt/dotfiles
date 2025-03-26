@@ -77,7 +77,8 @@ echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR
 case $ID in
     ubuntu|debian)
         echo -e "${BLUE}update all packages${ENDCOLOR}"
-        sudo apt update && sudo apt upgrade
+        # FIXME: uncomment
+        # sudo apt update && sudo apt upgrade
         install_with_package_manager apt git
     ;;
     arch)

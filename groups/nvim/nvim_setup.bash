@@ -21,6 +21,7 @@ case $ID in
         install_with_package_manager apt default-jdk
         install_with_package_manager apt software-properties-common
 
+        echo -e "${YELLOW}adding unstable nvim ppa${ENDCOLOR}"
         sudo add-apt-repository ppa:neovim-ppa/unstable -y
         sudo apt update
         install_with_package_manager apt neovim

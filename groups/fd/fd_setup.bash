@@ -9,9 +9,9 @@ case $ID in
     ubuntu|debian)
         install_with_package_manager apt fd-find
 
-        if command -v fd >/dev/null 2>&1; then
-            # FIXME: read echo
-            echo -e "${RED}FIXME figure out how to link this in debian${ENDCOLOR}"
+        if ! command -v fd >/dev/null 2>&1 && command -v fdfind >/dev/null 2>&1; then
+            mkdir -p "$HOME/.local/bin"
+            link_file "$(which fdfind)" "$HOME/.local/bin/fd"
         fi
     ;;
     arch)

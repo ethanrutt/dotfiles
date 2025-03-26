@@ -13,6 +13,7 @@ eval "$(fzf --bash)"
 # dots
 #
 [ -d "$HOME/.dots" ] && export PATH="$PATH:$HOME/.dots/bin"
+[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
 #
 # nvm
