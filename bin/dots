@@ -26,7 +26,7 @@ function install_with_package_manager() {
     case "$1" in
         pacman)
             if ! pacman -Q "$2" >/dev/null 2>&1; then
-                sudo pacman -S --noconfirm --quiet "$2"
+                sudo pacman -S --noconfirm "$2"
             fi
         ;;
         apt|apt-get)
@@ -41,7 +41,7 @@ function install_with_package_manager() {
             fi
 
             if ! yay -Q "$2" >/dev/null 2>&1; then
-                yay -S --noconfirm --quiet "$2"
+                yay -S --noconfirm "$2"
             fi
         ;;
         *)
@@ -82,7 +82,7 @@ case $ID in
     ;;
     arch)
         echo -e "${BLUE}update all packages${ENDCOLOR}"
-        sudo pacman -Syu --quiet
+        sudo pacman -Syu
 
         echo -e "${BLUE}setting locale${ENDCOLOR}"
         sudo localectl set-locale LANG=en_US.UTF-8
@@ -97,7 +97,7 @@ esac
 
 if ! [[ -d "$DOTS_DIR" ]]; then
     echo -e "${BLUE}cloning repository${ENDCOLOR}"
-    git clone --recurse-submodules git@github.com:ethanrutt/dots_rewrite.git "$DOTS_DIR"
+    git clone --recurse-submodules --quiet git@github.com:ethanrutt/dots_rewrite.git "$DOTS_DIR"
 else
     echo -e "${BLUE}updating repository${ENDCOLOR}"
     git -C "$DOTS_DIR" pull --recurse-submodules --quiet
