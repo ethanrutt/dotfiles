@@ -1,8 +1,5 @@
 # Ethan's dots
 
-heavily inspired from TechDufus's
-[dotfiles](https://github.com/TechDufus/dotfiles)
-
 ## Usage
 
 > [!WARNING]
@@ -35,17 +32,6 @@ dotfiles again with the upstream repository
 dots
 ```
 
-To run only a specific role, or pass other flags to the `ansible-playbook`
-command, just pass them straight into the `dots` binary
-
-i.e. running only the `nvim` role
-```sh
-dots -t nvim
-```
-
-note on Ubuntu there is no `delta` in apt so a manual install is required. This
-is documented and when running the `delta` role a debug message is printed.
-
 ## Packages and Complexity
 > [!NOTE]
 > Complexity level means how much is involved in installing the package.
@@ -72,11 +58,11 @@ is documented and when running the `delta` role a debug message is printed.
 | alacritty | n/a | n/a | 1 |
 | obsidian | n/a | n/a | 1 |
 | awesome | n/a | n/a | 1 |
-| pavucontrol | n/a | n/a | 1 |
 | picom | n/a | n/a | 1 |
 | wallpapers | n/a | n/a | 1 |
 | xorg | n/a | n/a | 1 |
 | rofi | n/a | n/a | 1 |
+| pavucontrol | n/a | n/a | 0 |
 | fcitx | n/a | n/a | 0 |
 | playerctl | n/a | n/a | 0 |
 | shotgun | n/a | n/a | 0 |
@@ -95,32 +81,4 @@ is documented and when running the `delta` role a debug message is printed.
 | postman | n/a | n/a | 0 |
 | 1password | n/a | n/a | 0 |
 | keymapp | n/a | n/a | 0 |
-
-## Dev Commands
-
-get ansible with pip
-```sh
-pip install ansible
-```
-
-get ansible with package manager
-```sh
-sudo pacman -S ansible
-```
-
-run the playbook (prob won't work since you likely need sudo to install
-packages)
-```sh
-ansible-playbook main.yml
-```
-
-run the playbook and install packages too
-```sh
-ansible-playbook --ask-become-pass main.yml
-```
-
-run only a specific role from the playbook i.e. only the nvim role
-```sh
-ansible-playbook --ask-become-pass main.yml -t nvim
-```
 
