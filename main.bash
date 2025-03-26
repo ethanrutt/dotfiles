@@ -54,9 +54,10 @@ if ! [[ -d "$HOME/.config" ]]; then
     mkdir "$HOME/.config"
 fi
 
-# FIXME: need bash dependencies before
+source "$DOTS_DIR/groups/git/git_setup.bash"
 source "$DOTS_DIR/groups/bat/bat_setup.bash"
 source "$DOTS_DIR/groups/eza/eza_setup.bash"
 source "$DOTS_DIR/groups/tmux/tmux_setup.bash"
 source "$DOTS_DIR/groups/fd/fd_setup.bash"
+source "$DOTS_DIR/groups/fzf/fzf_setup.bash"
 source "$DOTS_DIR/groups/bash/bash_setup.bash"
