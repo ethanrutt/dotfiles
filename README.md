@@ -15,7 +15,7 @@ First, [add an ssh key](https://docs.github.com/en/authentication/connecting-to-
 
 Then, this oneliner should set up a system completely
 ```sh
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dots/main/bin/dots)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dotfiless/master/bin/dots)"
 ```
 > [!NOTE]
 > Make sure to have `curl` installed before running.
