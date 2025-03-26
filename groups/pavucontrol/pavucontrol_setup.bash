@@ -7,6 +7,4 @@ echo -e "\n\n${MAGENTA}pavucontrol setup${ENDCOLOR}"
 
 install_with_package_manager pacman pavucontrol
 
-link_file "$DOTS_DIR/groups/pavucontrol/files/pavucontrol.ini" "$HOME/.config/pavucontrol.ini"
-
 echo -e "${GREEN}pavucontrol setup complete${ENDCOLOR}"
