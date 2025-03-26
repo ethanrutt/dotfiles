@@ -52,4 +52,5 @@ fi
 # FIXME: need bash dependencies before
 source "$DOTS_DIR/groups/bat/bat_setup.bash"
 source "$DOTS_DIR/groups/eza/eza_setup.bash"
+source "$DOTS_DIR/groups/tmux/tmux_setup.bash"
 source "$DOTS_DIR/groups/bash/bash_setup.bash"
