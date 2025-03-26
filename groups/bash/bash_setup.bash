@@ -5,34 +5,15 @@ fi
 
 echo -e "\n\n${MAGENTA}bash setup${ENDCOLOR}"
 
-if [[ -f "$HOME/.bashrc" ]]; then
-    echo -e "${YELLOW}removing existing .bashrc${ENDCOLOR}"
-    rm "$HOME/.bashrc"
-fi
+link_file "$DOTS_DIR/groups/bash/files/.bashrc" "$HOME/.bashrc"
+link_file "$DOTS_DIR/groups/bash/files/bash" "$HOME/.config/bash"
 
-if [[ -f "$HOME/.bash_profile" ]]; then
-    echo -e "${YELLOW}removing existing .bash_profile${ENDCOLOR}"
-    rm "$HOME/.bash_profile"
-fi
-
-if [[ -d "$HOME/.config/bash" ]] || [[ -L "$HOME/.config/bash" ]]; then
-    echo -e "${YELLOW}removing existing .config/bash${ENDCOLOR}"
-    rm -r "$HOME/.config/bash"
-fi
-
-echo -e "${YELLOW}linking new .bashrc${ENDCOLOR}"
-ln -s "$DOTS_DIR/groups/bash/files/.bashrc" "$HOME/.bashrc"
-
-echo -e "${YELLOW}linking new .config/bash${ENDCOLOR}"
-ln -s "$DOTS_DIR/groups/bash/files/bash" "$HOME/.config/bash"
-
-echo -e "${YELLOW}linking new .bash_profile${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
-        ln -s "$DOTS_DIR/groups/bash/files/debian/.bash_profile" "$HOME/.bash_profile"
+        link_file "$DOTS_DIR/groups/bash/files/debian/.bash_profile" "$HOME/.bash_profile"
     ;;
     arch)
-        ln -s "$DOTS_DIR/groups/bash/files/arch/.bash_profile" "$HOME/.bash_profile"
+        link_file "$DOTS_DIR/groups/bash/files/arch/.bash_profile" "$HOME/.bash_profile"
     ;;
 esac
 

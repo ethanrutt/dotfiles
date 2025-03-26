@@ -8,59 +8,35 @@ echo -e "\n\n${MAGENTA}nvim setup${ENDCOLOR}"
 echo -e "${YELLOW}installing nvim and dependencies${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
-        sudo apt-get install -y cmake
-        sudo apt-get install -y curl
-        sudo apt-get install -y wget
-        sudo apt-get install -y unzip
-        sudo apt-get install -y ripgrep
-        sudo apt-get install -y gcc
-        sudo apt-get install -y python3
-        sudo apt-get install -y python-is-python3
-        sudo apt-get install -y python3-venv
-        sudo apt-get install -y default-jdk
-        sudo apt-get install -y software-properties-common
+        install_with_package_manager apt cmake
+        install_with_package_manager apt curl
+        install_with_package_manager apt wget
+        install_with_package_manager apt unzip
+        install_with_package_manager apt ripgrep
+        install_with_package_manager apt gcc
+        install_with_package_manager apt python3
+        install_with_package_manager apt python-is-python3
+        install_with_package_manager apt python3-venv
+        install_with_package_manager apt default-jdk
+        install_with_package_manager apt software-properties-common
 
         sudo add-apt-repository ppa:neovim-ppa/unstable -y
         sudo apt update
-        sudo apt-get install -y neovim
+        install_with_package_manager apt neovim
     ;;
     arch)
-        if ! pacman -Q cmake >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm cmake
-        fi
-        if ! pacman -Q curl >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm curl
-        fi
-        if ! pacman -Q wget >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm wget
-        fi
-        if ! pacman -Q unzip >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm unzip
-        fi
-        if ! pacman -Q ripgrep >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm ripgrep
-        fi
-        if ! pacman -Q gcc >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm gcc
-        fi
-        if ! pacman -Q python >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm python
-        fi
-        if ! pacman -Q jdk21-openjdk >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm jdk21-openjdk
-        fi
-        if ! pacman -Q neovim >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm neovim
-        fi
+        install_with_package_manager pacman cmake
+        install_with_package_manager pacman curl
+        install_with_package_manager pacman wget
+        install_with_package_manager pacman unzip
+        install_with_package_manager pacman ripgrep
+        install_with_package_manager pacman gcc
+        install_with_package_manager pacman python
+        install_with_package_manager pacman jdk21-openjdk
+        install_with_package_manager pacman neovim
     ;;
 esac
 
-if [[ -d "$HOME/.config/nvim" ]] || [[ -L "$HOME/.config/nvim" ]]; then
-    echo -e "${YELLOW}removing existing .config/nvim${ENDCOLOR}"
-    rm -r "$HOME/.config/nvim"
-fi
-
-echo -e "${YELLOW}linking new .config/nvim${ENDCOLOR}"
-ln -s "$DOTS_DIR/groups/nvim/files/neovim-config/nvim" "$HOME/.config/nvim"
+link_file "$DOTS_DIR/groups/nvim/files/neovim-config/nvim" "$HOME/.config/nvim"
 
 echo -e "${GREEN}nvim setup complete${ENDCOLOR}"

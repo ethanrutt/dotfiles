@@ -5,12 +5,9 @@ fi
 
 echo -e "\n\n${MAGENTA}fd setup${ENDCOLOR}"
 
-echo -e "${YELLOW}installing fd${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
-        if ! dpkg -s fd-find >/dev/null 2>&1; then
-            sudo apt-get install -y fd-find
-        fi
+        install_with_package_manager apt fd-find
 
         if command -v fd >/dev/null 2>&1; then
             # FIXME: read echo
@@ -18,9 +15,7 @@ case $ID in
         fi
     ;;
     arch)
-        if ! pacman -Q fd >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm fd
-        fi
+        install_with_package_manager pacman fd
     ;;
 esac
 

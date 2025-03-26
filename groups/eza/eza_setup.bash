@@ -5,13 +5,11 @@ fi
 
 echo -e "\n\n${MAGENTA}eza setup${ENDCOLOR}"
 
-echo -e "${YELLOW}installing eza${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
         if ! dpkg -s eza >/dev/null 2>&1; then
             # see eza INSTALL.md
-            echo -e "${YELLOW}installing gpg${ENDCOLOR}"
-            sudo apt-get install -y gpg
+            install_with_package_manager apt gpg
             echo -e "${YELLOW}setting up keyrings${ENDCOLOR}"
             sudo mkdir -p /etc/apt/keyrings
             echo -e "${YELLOW}getting eza gpg${ENDCOLOR}"
@@ -19,14 +17,12 @@ case $ID in
             echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
             sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
 
-            echo -e "${YELLOW}installing eza${ENDCOLOR}"
-            sudo apt-get install -y eza
+            sudo apt update
+            install_with_package_manager apt eza
         fi
     ;;
     arch)
-        if ! pacman -Q eza >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm eza
-        fi
+        install_with_package_manager pacman eza
     ;;
 esac
 

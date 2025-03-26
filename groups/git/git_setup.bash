@@ -9,15 +9,9 @@ if [[ $ID == "ubuntu" ]] || [[ $ID == "debian" ]]; then
     echo -e "${YELLOW}installing newer git${ENDCOLOR}"
     sudo add-apt-repository ppa:git-core/ppa -y
     sudo apt update
-    sudo apt install -y git
+    install_with_package_manager apt git
 fi
 
-if [[ -f "$HOME/.gitconfig" ]]; then
-    echo -e "${YELLOW}removing existing .gitconfig${ENDCOLOR}"
-    rm "$HOME/.gitconfig"
-fi
-
-echo -e "${YELLOW}linking new .gitconfig${ENDCOLOR}"
-ln -s "$DOTS_DIR/groups/git/files/.gitconfig" "$HOME/.gitconfig"
+link_file "$DOTS_DIR/groups/git/files/.gitconfig" "$HOME/.gitconfig"
 
 echo -e "${GREEN}git setup complete${ENDCOLOR}"

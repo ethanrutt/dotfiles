@@ -12,16 +12,65 @@ MAGENTA="\e[35m" # starting new role
 CYAN="\e[36m" # variables
 ENDCOLOR="\e[0m"
 
+# usage: install_with_package_manager <package_manager> <package>
+function install_with_package_manager() {
+    if [[ -z "$1" ]]; then
+        echo -e "${RED}first positional argument (package manager) missing${ENDCOLOR}"
+        return 1
+    fi
+
+    if [[ -z "$2" ]]; then
+        echo -e "${RED}second positional argument (package) missing${ENDCOLOR}"
+        return 1
+    fi
+
+    echo -e "${YELLOW}installing $2 with $1${ENDCOLOR}"
+    case $1 in
+        pacman)
+            if ! pacman -Q "$2" >/dev/null 2>&1; then
+                sudo pacman -S --noconfirm "$2"
+            fi
+        ;;
+        apt|apt-get)
+            if ! dpkg -s "$2" >/dev/null 2>&1; then
+                sudo apt-get install -y "$2"
+            fi
+        ;;
+        *)
+            echo -e "${RED}unsupported package manager:${ENDCOLOR} ${CYAN}$1${ENDCOLOR}"
+            return 1
+        ;;
+    esac
+}
+
+# usage: link_file <src_file> <link_dest>
+function link_file() {
+    if [[ -z "$1" ]]; then
+        echo -e "${RED}first positional argument (src_file) missing${ENDCOLOR}"
+        return 1
+    fi
+
+    if [[ -z "$2" ]]; then
+        echo -e "${RED}second positional argument (link_dest) missing${ENDCOLOR}"
+        return 1
+    fi
+
+    if [[ -f "$2" ]] || [[ -d "$2" ]] || [[ -L "$2" ]]; then
+        echo -e "${YELLOW}removing existing $2${ENDCOLOR}"
+        rm -r "$2"
+    fi
+
+    echo -e "${YELLOW}linking new $1${ENDCOLOR}"
+    ln -s "$1" "$2"
+}
+
 source /etc/os-release
 echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
         echo -e "${BLUE}update all packages${ENDCOLOR}"
         sudo apt update && sudo apt upgrade
-        if ! dpkg -s git >/dev/null 2>&1; then
-            echo -e "${BLUE}Installing git${ENDCOLOR}"
-            sudo apt-get install -y git
-        fi
+        install_with_package_manager apt git
     ;;
     arch)
         echo -e "${BLUE}update all packages${ENDCOLOR}"
@@ -30,10 +79,7 @@ case $ID in
         echo -e "${BLUE}setting locale${ENDCOLOR}"
         sudo localectl set-locale LANG=en_US.UTF-8
 
-        if ! pacman -Q git >/dev/null 2>&1; then
-            echo -e "${BLUE}installing git${ENDCOLOR}"
-            sudo pacman -S --noconfirm git
-        fi
+        install_with_package_manager pacman git
     ;;
   *)
       echo -e "${RED}unsupported os${ENDCOLOR}"

@@ -5,25 +5,14 @@ fi
 
 echo -e "\n\n${MAGENTA}nvm setup${ENDCOLOR}"
 
-echo -e "${YELLOW}installing curl and python3${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
-        if ! command -v curl >/dev/null 2>&1; then
-            sudo apt-get install -y curl
-        fi
-
-        if ! command -v python3 >/dev/null 2>&1; then
-            sudo apt-get install -y python3
-        fi
+        install_with_package_manager apt curl
+        install_with_package_manager apt python3
     ;;
     arch)
-        if ! command -v curl >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm curl
-        fi
-
-        if ! command -v python3 >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm python
-        fi
+        install_with_package_manager pacman curl
+        install_with_package_manager pacman python
     ;;
 esac
 

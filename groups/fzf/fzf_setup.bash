@@ -5,7 +5,6 @@ fi
 
 echo -e "\n\n${MAGENTA}fzf setup${ENDCOLOR}"
 
-echo -e "${YELLOW}installing fzf${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
         if dpkg -s fzf >/dev/null 2>&1; then
@@ -18,9 +17,7 @@ case $ID in
         fi
     ;;
     arch)
-        if ! pacman -Q fzf >/dev/null 2>&1; then
-            sudo pacman -S --noconfirm fzf
-        fi
+        install_with_package_manager pacman fzf
     ;;
 esac
 
