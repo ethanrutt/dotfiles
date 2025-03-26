@@ -3,8 +3,10 @@ if [[ -z "$DOTS_DIR" ]] || [[ -z "$ID" ]]; then
     exit 1
 fi
 
-echo -e "\n\n${MAGENTA}pavucontrol setup${ENDCOLOR}"
+echo -e "\n\n${MAGENTA}rofi setup${ENDCOLOR}"
 
-install_with_package_manager pacman pavucontrol
+install_with_package_manager pacman rofi
 
-echo -e "${GREEN}pavucontrol setup complete${ENDCOLOR}"
+link_file "$DOTS_DIR/groups/rofi/files/rofi" "$HOME/.config/rofi"
+
+echo -e "${GREEN}rofi setup complete${ENDCOLOR}"
