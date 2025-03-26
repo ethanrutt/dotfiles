@@ -5,6 +5,7 @@ fi
 
 echo -e "\n\n${MAGENTA}bat setup${ENDCOLOR}"
 
+echo -e "${YELLOW}installing bat${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
         echo -e "${RED}Because apt sucks, you must install this manually, as the version on apt right now is incompatible with delta. Go to the releases page, download the deb file, and run \`dpkg -i file.deb\`. https://github.com/sharkdp/bat/releases${ENDCOLOR}"
