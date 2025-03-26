@@ -45,6 +45,7 @@ function install_with_package_manager() {
             if ! yay -Q "$2" >/dev/null 2>&1; then
                 yay -S --noconfirm "$2"
             fi
+        ;;
         *)
             echo -e "${RED}unsupported package manager:${ENDCOLOR} ${CYAN}$1${ENDCOLOR}"
             return 1
@@ -90,10 +91,10 @@ case $ID in
 
         install_with_package_manager pacman git
     ;;
-  *)
-      echo -e "${RED}unsupported os${ENDCOLOR}"
-      exit 1
-  ;;
+    *)
+        echo -e "${RED}unsupported os${ENDCOLOR}"
+        exit 1
+    ;;
 esac
 
 # FIXME: uncomment
