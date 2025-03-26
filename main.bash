@@ -36,6 +36,15 @@ function install_with_package_manager() {
                 sudo apt-get install -y "$2"
             fi
         ;;
+        yay)
+            if ! pacman -Q yay >/dev/null 2>&1; then
+                echo -e "${RED}trying to install with yay, but yay doesn't exist${ENDCOLOR}"
+                return 1
+            fi
+
+            if ! yay -Q "$2" >/dev/null 2>&1; then
+                yay -S --noconfirm "$2"
+            fi
         *)
             echo -e "${RED}unsupported package manager:${ENDCOLOR} ${CYAN}$1${ENDCOLOR}"
             return 1
@@ -121,6 +130,7 @@ fi
 if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/awesome/awesome_setup.bash"
     source "$DOTS_DIR/groups/alacritty/alacritty_setup.bash"
+    source "$DOTS_DIR/groups/picom/picom_setup.bash"
     source "$DOTS_DIR/groups/obsidian/obsidian_setup.bash"
     # pulseaudio here
     source "$DOTS_DIR/groups/pavucontrol/pavucontrol_setup.bash"
