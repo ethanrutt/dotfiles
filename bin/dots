@@ -26,12 +26,12 @@ function install_with_package_manager() {
     case "$1" in
         pacman)
             if ! pacman -Q "$2" >/dev/null 2>&1; then
-                sudo pacman -S --noconfirm "$2"
+                sudo pacman -S --noconfirm --quiet "$2"
             fi
         ;;
         apt|apt-get)
             if ! dpkg -s "$2" >/dev/null 2>&1; then
-                sudo apt-get install -y "$2"
+                sudo apt-get install -y -q "$2"
             fi
         ;;
         yay)
@@ -41,7 +41,7 @@ function install_with_package_manager() {
             fi
 
             if ! yay -Q "$2" >/dev/null 2>&1; then
-                yay -S --noconfirm "$2"
+                yay -S --noconfirm --quiet "$2"
             fi
         ;;
         *)
@@ -77,13 +77,12 @@ echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR
 case $ID in
     ubuntu|debian)
         echo -e "${BLUE}update all packages${ENDCOLOR}"
-        # FIXME: uncomment
-        # sudo apt update && sudo apt upgrade
+        sudo apt -q update && sudo apt -q upgrade
         install_with_package_manager apt git
     ;;
     arch)
         echo -e "${BLUE}update all packages${ENDCOLOR}"
-        sudo pacman -Syu
+        sudo pacman -Syu --quiet
 
         echo -e "${BLUE}setting locale${ENDCOLOR}"
         sudo localectl set-locale LANG=en_US.UTF-8
