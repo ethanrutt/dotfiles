@@ -102,6 +102,7 @@ fi
 
 # terminal tools
 source "$DOTS_DIR/groups/git/git_setup.bash"
+source "$DOTS_DIR/groups/delta/delta_setup.bash"
 source "$DOTS_DIR/groups/bat/bat_setup.bash"
 source "$DOTS_DIR/groups/eza/eza_setup.bash"
 source "$DOTS_DIR/groups/tmux/tmux_setup.bash"
