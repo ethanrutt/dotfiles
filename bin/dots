@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# FIXME: uncomment
-# DOTS_DIR="$HOME/.dots"
-DOTS_DIR="$HOME/projects/dots_rewrite"
+DOTS_DIR="$HOME/.dots"
 
 RED="\e[31m" # errors
 GREEN="\e[32m" # successful roles
@@ -97,14 +95,13 @@ case $ID in
     ;;
 esac
 
-# FIXME: uncomment
-# if ! [[ -d "$DOTS_DIR" ]]; then
-#     echo -e "${BLUE}cloning repository${ENDCOLOR}"
-#     git clone --recurse-submodules git@github.com:ethanrutt/dots.git "$DOTS_DIR"
-# else
-#     echo -e "${BLUE}updating repository${ENDCOLOR}"
-#     git -C "$DOTS_DIR" pull --recurse-submodules --quiet
-# fi
+if ! [[ -d "$DOTS_DIR" ]]; then
+    echo -e "${BLUE}cloning repository${ENDCOLOR}"
+    git clone --recurse-submodules git@github.com:ethanrutt/dots_rewrite.git "$DOTS_DIR"
+else
+    echo -e "${BLUE}updating repository${ENDCOLOR}"
+    git -C "$DOTS_DIR" pull --recurse-submodules --quiet
+fi
 
 if ! [[ -d "$HOME/.config" ]]; then
     mkdir "$HOME/.config"
