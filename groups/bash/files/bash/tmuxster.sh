@@ -167,7 +167,7 @@ function tmuxster {
     fi
 }
 
-export TMUXSTER_DEFAULT_DIR="/home/ethanrutt/projects"
+export TMUXSTER_DEFAULT_DIR="$HOME/projects"
 
 alias tster="tmuxster"
 
