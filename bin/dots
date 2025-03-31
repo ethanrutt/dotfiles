@@ -22,7 +22,7 @@ function install_with_package_manager() {
         return 1
     fi
 
-    echo -e "${YELLOW}installing $2 with $1${ENDCOLOR}"
+    echo -e "${YELLOW}installing${ENDCOLOR} ${CYAN}$2${ENDCOLOR} ${YELLOW}with${ENDCOLOR} ${CYAN}$1${ENDCOLOR}"
     case "$1" in
         pacman)
             if ! pacman -Q "$2" >/dev/null 2>&1; then
@@ -64,11 +64,11 @@ function link_file() {
     fi
 
     if [[ -f "$2" ]] || [[ -d "$2" ]] || [[ -L "$2" ]]; then
-        echo -e "${YELLOW}removing existing $2${ENDCOLOR}"
+        echo -e "${YELLOW}removing existing${ENDCOLOR} ${CYAN}$2${ENDCOLOR}"
         rm -r "$2"
     fi
 
-    echo -e "${YELLOW}linking new $1${ENDCOLOR}"
+    echo -e "${YELLOW}linking new${ENDCOLOR} ${CYAN}$1${ENDCOLOR}"
     ln -s "$1" "$2"
 }
 
