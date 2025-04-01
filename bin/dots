@@ -9,6 +9,7 @@ BLUE="\e[34m" # pre-setup messages
 MAGENTA="\e[35m" # starting new role
 CYAN="\e[36m" # variables
 ENDCOLOR="\e[0m"
+source /etc/os-release
 
 # usage: install_with_package_manager <package_manager> <package>
 function install_with_package_manager() {
@@ -72,7 +73,6 @@ function link_file() {
     ln -s "$1" "$2"
 }
 
-source /etc/os-release
 echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
@@ -141,4 +141,6 @@ if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/wallpapers/wallpapers_setup.bash"
 fi
 
-echo -e "${GREEN}everything is finished. you probably want to restart your system to finish installing everything${ENDCOLOR}"
+echo -e "${GREEN}everything is finished. running test${ENDCOLOR}"
+
+source "$DOTS_DIR/test/confirm_installed.bash"
