@@ -18,7 +18,6 @@ case $ID in
         install_with_package_manager apt python3
         install_with_package_manager apt python-is-python3
         install_with_package_manager apt python3-venv
-        install_with_package_manager apt default-jdk
         install_with_package_manager apt software-properties-common
 
         echo -e "${YELLOW}adding unstable nvim ppa${ENDCOLOR}"
@@ -35,7 +34,6 @@ case $ID in
         install_with_package_manager pacman ripgrep
         install_with_package_manager pacman gcc
         install_with_package_manager pacman python
-        install_with_package_manager pacman jdk21-openjdk
         install_with_package_manager pacman neovim
     ;;
 esac
