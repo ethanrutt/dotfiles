@@ -125,6 +125,10 @@ source "$DOTS_DIR/groups/bash/bash_setup.bash"
 source "$DOTS_DIR/groups/nvm/nvm_setup.bash"
 source "$DOTS_DIR/groups/nvim/nvim_setup.bash"
 
+if [[ $(systemd-detect-virt) == "wsl" ]] && [[ "$ID" == "ubuntu" ]]; then
+    source "$DOTS_DIR/groups/wsl/wsl_setup.bash"
+fi
+
 if [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/man/man_setup.bash"
     source "$DOTS_DIR/groups/yay/yay_setup.bash"
