@@ -5,7 +5,7 @@ fi
 
 echo -e "\n\n${MAGENTA}wsl setup${ENDCOLOR}"
 
-sudo add-apt-repository ppa:wslutilities/wslu
+sudo add-apt-repository ppa:wslutilities/wslu -y
 sudo apt update
 install_with_package_manager apt wslu
 
