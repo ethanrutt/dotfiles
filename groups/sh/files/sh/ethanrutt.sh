@@ -1,3 +1,6 @@
+#
+# aliases
+#
 alias q='exit' \
 	home='cd ~' \
 	..='cd ..' \
@@ -39,7 +42,6 @@ function cd {
     builtin cd "$@" && ll
 }
 
-export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 
 #
 # dots
@@ -47,11 +49,13 @@ export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 [ -d "$HOME/.dots" ] && export PATH="$PATH:$HOME/.dots/bin"
 [ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
+
 #
 # nvm
 #
 [ -d "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 
 #
 # bat
@@ -62,9 +66,14 @@ if command -v bat &> /dev/null ; then
     export MANROFFOPT="-c"
 fi
 
+
 #
 # fzf integration
 #
+[ -d "$HOME/.fzf" ] && export PATH="$PATH:$HOME/.fzf/bin"
+[ -d "$HOME/.fzf-git" ] && source "$HOME/.fzf-git/fzf-git.sh"
+export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+
 if command -v bat &>/dev/null && command -v fzf &>/dev/null && command -v eza &> /dev/null && command -v fd &> /dev/null ; then
     # preview is bat if it's a file, eza tree otherwise
     export FZF_CTRL_T_OPTS="

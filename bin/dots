@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+#
+# variables
+#
 # FIXME: change back
 #DOTS_DIR="$HOME/.dots"
 DOTS_DIR="$HOME/projects/dotfiles"
@@ -11,7 +15,13 @@ BLUE="\e[34m" # pre-setup messages
 MAGENTA="\e[35m" # starting new role
 CYAN="\e[36m" # variables
 ENDCOLOR="\e[0m"
+
 source /etc/os-release
+
+
+#
+# helper functions
+#
 
 # usage: install_with_package_manager <package_manager> <package>
 function install_with_package_manager() {
@@ -75,6 +85,10 @@ function link_file() {
     ln -s "$1" "$2"
 }
 
+
+#
+# os specific setup
+#
 echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
@@ -101,6 +115,10 @@ case $ID in
     ;;
 esac
 
+
+#
+# dotfiles repository setup / sync
+#
 if ! [[ -d "$DOTS_DIR" ]]; then
     echo -e "${BLUE}cloning repository${ENDCOLOR}"
     git clone --recurse-submodules --quiet git@github.com:ethanrutt/dotfiles.git "$DOTS_DIR"
@@ -113,6 +131,11 @@ if ! [[ -d "$HOME/.config" ]]; then
     mkdir "$HOME/.config"
 fi
 
+
+#
+# installation
+#
+
 # terminal tools
 source "$DOTS_DIR/groups/git/git_setup.sh"
 source "$DOTS_DIR/groups/delta/delta_setup.sh"
@@ -124,8 +147,8 @@ source "$DOTS_DIR/groups/fzf/fzf_setup.sh"
 source "$DOTS_DIR/groups/sh/sh_setup.sh"
 
 # nvim
-# source "$DOTS_DIR/groups/nvm/nvm_setup.bash"
-# source "$DOTS_DIR/groups/nvim/nvim_setup.bash"
+source "$DOTS_DIR/groups/nvm/nvm_setup.sh"
+source "$DOTS_DIR/groups/nvim/nvim_setup.sh"
 #
 # if [[ $(systemd-detect-virt) == "wsl" ]] && [[ "$ID" == "ubuntu" ]]; then
 #     source "$DOTS_DIR/groups/wsl/wsl_setup.bash"
