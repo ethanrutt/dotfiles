@@ -7,16 +7,15 @@ echo -e "\n\n${MAGENTA}yay setup${ENDCOLOR}"
 
 install_with_package_manager pacman base-devel
 
-if ! [[ -d "$HOME/.yay-bin" ]]; then
-    echo -e "${YELLOW}cloning yay${ENDCOLOR}"
-    git clone --quiet https://aur.archlinux.org/yay-bin.git "$HOME/.yay-bin"
-fi
-
 if ! command -v yay >/dev/null 2>&1; then
-    echo -e "${YELLOW}installing yay${ENDCOLOR}"
-    pushd "$HOME/.yay-bin"
-    makepkg -si --noconfirm
-    popd
+	if ! [[ -d "$HOME/.yay-bin" ]]; then
+	    echo -e "${YELLOW}cloning yay${ENDCOLOR}"
+	    git clone --quiet https://aur.archlinux.org/yay-bin.git "$HOME/.yay-bin"
+	fi
+	echo -e "${YELLOW}installing yay${ENDCOLOR}"
+	pushd "$HOME/.yay-bin"
+	makepkg -si --noconfirm
+	popd
 fi
 
 echo -e "${GREEN}yay setup complete${ENDCOLOR}"
