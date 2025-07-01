@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-DOTS_DIR="$HOME/.dots"
+
+#
+# variables
+#
+# FIXME: change back
+#DOTS_DIR="$HOME/.dots"
+DOTS_DIR="$HOME/projects/dotfiles"
 
 RED="\e[31m" # errors
 GREEN="\e[32m" # successful roles
@@ -9,7 +15,13 @@ BLUE="\e[34m" # pre-setup messages
 MAGENTA="\e[35m" # starting new role
 CYAN="\e[36m" # variables
 ENDCOLOR="\e[0m"
+
 source /etc/os-release
+
+
+#
+# helper functions
+#
 
 # usage: install_with_package_manager <package_manager> <package>
 function install_with_package_manager() {
@@ -73,6 +85,10 @@ function link_file() {
     ln -s "$1" "$2"
 }
 
+
+#
+# os specific setup
+#
 echo -e "${BLUE}loading Setup for detected os:${ENDCOLOR} ${CYAN}${ID}${ENDCOLOR}"
 case $ID in
     ubuntu|debian)
@@ -99,6 +115,10 @@ case $ID in
     ;;
 esac
 
+
+#
+# dotfiles repository setup / sync
+#
 if ! [[ -d "$DOTS_DIR" ]]; then
     echo -e "${BLUE}cloning repository${ENDCOLOR}"
     git clone --recurse-submodules --quiet git@github.com:ethanrutt/dotfiles.git "$DOTS_DIR"
@@ -111,41 +131,40 @@ if ! [[ -d "$HOME/.config" ]]; then
     mkdir "$HOME/.config"
 fi
 
+
+#
+# installation
+#
+
 # terminal tools
-source "$DOTS_DIR/groups/git/git_setup.bash"
-source "$DOTS_DIR/groups/delta/delta_setup.bash"
-source "$DOTS_DIR/groups/bat/bat_setup.bash"
-source "$DOTS_DIR/groups/eza/eza_setup.bash"
-source "$DOTS_DIR/groups/tmux/tmux_setup.bash"
-source "$DOTS_DIR/groups/fd/fd_setup.bash"
-source "$DOTS_DIR/groups/fzf/fzf_setup.bash"
-source "$DOTS_DIR/groups/bash/bash_setup.bash"
+source "$DOTS_DIR/groups/git/git_setup.sh"
+source "$DOTS_DIR/groups/delta/delta_setup.sh"
+source "$DOTS_DIR/groups/bat/bat_setup.sh"
+source "$DOTS_DIR/groups/eza/eza_setup.sh"
+source "$DOTS_DIR/groups/tmux/tmux_setup.sh"
+source "$DOTS_DIR/groups/fd/fd_setup.sh"
+source "$DOTS_DIR/groups/fzf/fzf_setup.sh"
+source "$DOTS_DIR/groups/sh/sh_setup.sh"
 
 # nvim
-source "$DOTS_DIR/groups/nvm/nvm_setup.bash"
-source "$DOTS_DIR/groups/nvim/nvim_setup.bash"
+source "$DOTS_DIR/groups/nvm/nvm_setup.sh"
+source "$DOTS_DIR/groups/nvim/nvim_setup.sh"
 
 if [[ $(systemd-detect-virt) == "wsl" ]] && [[ "$ID" == "ubuntu" ]]; then
-    source "$DOTS_DIR/groups/wsl/wsl_setup.bash"
+    source "$DOTS_DIR/groups/wsl/wsl_setup.sh"
 fi
 
 if [[ "$ID" == "arch" ]]; then
-    source "$DOTS_DIR/groups/man/man_setup.bash"
-    source "$DOTS_DIR/groups/yay/yay_setup.bash"
+    source "$DOTS_DIR/groups/man/man_setup.sh"
+    source "$DOTS_DIR/groups/yay/yay_setup.sh"
 fi
 
 if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
-    source "$DOTS_DIR/groups/xorg/xorg_setup.bash"
-    source "$DOTS_DIR/groups/misc/misc_setup.bash"
-    source "$DOTS_DIR/groups/picom/picom_setup.bash"
-    source "$DOTS_DIR/groups/alacritty/alacritty_setup.bash"
-    source "$DOTS_DIR/groups/obsidian/obsidian_setup.bash"
-    source "$DOTS_DIR/groups/bluetooth/bluetooth_setup.bash"
-    source "$DOTS_DIR/groups/rofi/rofi_setup.bash"
-    source "$DOTS_DIR/groups/awesome/awesome_setup.bash"
-    source "$DOTS_DIR/groups/wallpapers/wallpapers_setup.bash"
+    source "$DOTS_DIR/groups/misc/misc_setup.sh"
+    source "$DOTS_DIR/groups/obsidian/obsidian_setup.sh"
+    source "$DOTS_DIR/groups/wallpapers/wallpapers_setup.sh"
 fi
 
 echo -e "${GREEN}everything is finished. running test${ENDCOLOR}"
 
-source "$DOTS_DIR/test/confirm_installed.bash"
+source "$DOTS_DIR/test/confirm_installed.sh"

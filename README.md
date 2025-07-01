@@ -11,9 +11,15 @@
 > submoduled private repositories. If you are able to do that, then I have a
 > huge problem on my hands (LOL).
 
+> [!NOTE]
+> This is now just a dotfiles repository. This assumes that you already have a
+> window manager or desktop environment set up. I changed it because I can't be
+> bothered to spend a lot of time keeping a wm configuration rice updated.
+> see [arch de](/application_notes/arch_de.md)
+
 First, [add an ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-Then, this oneliner should set up a system completely
+Then, this oneliner should set up all terminal tools and some fun applications
 ```sh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dotfiles/master/bin/dots)"
 ```
@@ -50,34 +56,14 @@ dots
 | git | 2 | 1 | 1 |
 | fd | 2 | 0 | 0 |
 | fzf | 2 | 0 | 0 |
-| bash | 1 | 1 | 1 |
+| sh | 1 | 1 | 1 |
 | tmux | 1 | 1 | 1 |
-| zips | 0 | 0 | 0 |
 | yay | n/a | 3 | 3 |
-| bluetooth | n/a | n/a | 2 |
-| alacritty | n/a | n/a | 1 |
 | obsidian | n/a | n/a | 1 |
-| awesome | n/a | n/a | 1 |
-| picom | n/a | n/a | 1 |
 | wallpapers | n/a | n/a | 1 |
-| xorg | n/a | n/a | 1 |
-| rofi | n/a | n/a | 1 |
-| pavucontrol | n/a | n/a | 0 |
-| fcitx | n/a | n/a | 0 |
-| playerctl | n/a | n/a | 0 |
-| shotgun | n/a | n/a | 0 |
+| fcitx5 | n/a | n/a | 0 |
 | spotify | n/a | n/a | 0 |
-| pulseaudio | n/a | n/a | 0 |
-| thunar | n/a | n/a | 0 |
-| vlc | n/a | n/a | 0 |
 | discord | n/a | n/a | 0 |
-| ephoto | n/a | n/a | 0 |
-| nitrogen | n/a | n/a | 0 |
-| mupdf | n/a | n/a | 0 |
-| xclip | n/a | n/a | 0 |
+| bitwarden | n/a | n/a | 0 |
 | below are 0 complexity but installed with `yay` | n/a | n/a | n/a |
-| fonts | n/a | n/a | 0 |
-| brave | n/a | n/a | 0 |
-| postman | n/a | n/a | 0 |
-| 1password | n/a | n/a | 0 |
 | keymapp | n/a | n/a | 0 |

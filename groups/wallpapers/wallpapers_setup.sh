@@ -6,6 +6,6 @@ fi
 echo -e "\n\n${MAGENTA}wallpapers setup${ENDCOLOR}"
 
 mkdir -p "$HOME/Pictures"
-link_file "$DOTS_DIR/groups/wallpapers/files/wallpapers" "$HOME/Pictures/wallpapers"
+link_file "$DOTS_DIR/groups/wallpapers/files/wallpapers" "$HOME/Pictures/wallpapers_ethanrutt"
 
 echo -e "${GREEN}wallpapers setup complete${ENDCOLOR}"

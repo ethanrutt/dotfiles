@@ -15,3 +15,17 @@
 	tool = nvimdiff
 [pull]
 	rebase = false
+[alias]
+	a = add
+	r = restore
+	b = branch
+	cm = commit -m
+	c = commit
+	cl = clone
+	co = checkout
+	discard = reset HEAD --hard
+	ps = push
+	pl = pull
+	s = status
+	d = diff
+	l = log

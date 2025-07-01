@@ -1,13 +1,47 @@
 #
-# fzf
+# aliases
 #
-[ -d "$HOME/.fzf" ] && export PATH="$PATH:$HOME/.fzf/bin"
-[ -d "$HOME/.fzf-git" ] && source "$HOME/.fzf-git/fzf-git.sh"
+alias q='exit' \
+	home='cd ~' \
+	..='cd ..' \
+	...='cd ../..' \
+	....='cd ../../..' \
 
-export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+if command -v eza &> /dev/null ; then
+    alias ll='eza -alF --icons' \
+	la='eza -A' \
+	l='eza --oneline' \
+	ls='eza' \
+	tree='eza --tree' 
+else
+    alias ll='ls -alF' \
+        la='ls -A' \
+	l='ls' 
+fi
 
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
+if command -v nvim &> /dev/null ; then
+    alias vimdiff='nvim -d'
+fi
+
+if command -v bat &> /dev/null ; then
+    alias cat='bat'
+fi
+
+if command -v git &> /dev/null ; then
+    alias g='git'
+fi
+
+if command -v tmux &> /dev/null ; then
+    # allow tmux to use all 256 colors
+    alias tmux='tmux -2'
+    alias tls='tmux ls'
+fi
+
+# ls on cd
+function cd {
+    builtin cd "$@" && ll
+}
+
 
 #
 # dots
@@ -15,12 +49,13 @@ eval "$(fzf --bash)"
 [ -d "$HOME/.dots" ] && export PATH="$PATH:$HOME/.dots/bin"
 [ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
+
 #
 # nvm
 #
 [ -d "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 
 #
 # bat
@@ -31,9 +66,14 @@ if command -v bat &> /dev/null ; then
     export MANROFFOPT="-c"
 fi
 
+
 #
 # fzf integration
 #
+[ -d "$HOME/.fzf" ] && export PATH="$PATH:$HOME/.fzf/bin"
+[ -d "$HOME/.fzf-git" ] && source "$HOME/.fzf-git/fzf-git.sh"
+export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+
 if command -v bat &>/dev/null && command -v fzf &>/dev/null && command -v eza &> /dev/null && command -v fd &> /dev/null ; then
     # preview is bat if it's a file, eza tree otherwise
     export FZF_CTRL_T_OPTS="
