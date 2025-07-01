@@ -8,7 +8,7 @@ alias q='exit' \
 	....='cd ../../..' \
 
 if command -v eza &> /dev/null ; then
-    alias ll='eza -alF --icons' \
+    alias ll='eza -alF --icons auto' \
         la='eza -A' \
         l='eza --oneline' \
         ls='eza' \
