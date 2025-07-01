@@ -24,6 +24,8 @@ too bad about it.
 - `HyDE` install script (without `chaotic-aur`)
 - changed keybindings in `~/.config/hypr/keybindings.conf`
 - changed monitor in `~/.config/hypr/monitor.conf` to have resolution and refresh rate of current monitor
+- removed some anime girls from `~/.config/fastfetch/logo/`
+- installed dotfiles
 - added `fcitx5` autostart in `~/.config/hypr/userprefs.conf`
 
 ## References
