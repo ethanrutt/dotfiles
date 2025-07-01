@@ -18,6 +18,11 @@ sudo locale-gen
 This should already be configured since they are in other parts of the
 dotfiles, but is required as well
 
+> [!NOTE]
+> This is for X11 applications
+> On Wayland, you don't need to do this unless you are using Xwayland applications, then it needs to be set for each application
+> fcitx5 is different
+
 You need to set environment variables in your startup shell. Mine is in
 `.bash_profile` for arch
 ```bash

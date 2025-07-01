@@ -22,9 +22,12 @@ nvm_latest_version=$(curl -s 'https://api.github.com/repos/nvm-sh/nvm/releases/l
 
 echo -e "${YELLOW}latest nvm version:${ENDCOLOR} ${CYAN}${nvm_latest_version}${ENDCOLOR}"
 
+mkdir -p "$HOME/.nvm"
+export NVM_DIR="$HOME/.nvm"
+
 echo -e "${YELLOW}installing nvm version:${ENDCOLOR} ${CYAN}${nvm_latest_version}${ENDCOLOR}"
 PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_latest_version}/install.sh | bash"
-source "$HOME/.nvm/nvm.sh"
+source "$NVM_DIR/nvm.sh"
 
 if ! command -v nvm >/dev/null 2>&1; then
     echo -e "${RED}nvm install failed${ENDCOLOR}"
