@@ -23,13 +23,8 @@ too bad about it.
 - `archinstall` script (cringe I know, I did it manually the first time I installed arch)
 - `HyDE` install script (without `chaotic-aur`)
 - changed keybindings in `~/.config/hypr/keybindings.conf`
-- changed monitor in `~/.config/hypr/monitor.conf` to have resolution and refresh rate
+- changed monitor in `~/.config/hypr/monitor.conf` to have resolution and refresh rate of current monitor
 - added `fcitx5` autostart in `~/.config/hypr/userprefs.conf`
 
 ## References
 - [HyDE](https://github.com/HyDE-Project/HyDE)
-
-# TODO
-- update test
-- update readme
-- merge to main
