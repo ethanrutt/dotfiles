@@ -9,14 +9,14 @@ alias q='exit' \
 
 if command -v eza &> /dev/null ; then
     alias ll='eza -alF --icons' \
-	la='eza -A' \
-	l='eza --oneline' \
-	ls='eza' \
-	tree='eza --tree' 
+        la='eza -A' \
+        l='eza --oneline' \
+        ls='eza' \
+        tree='eza --tree'
 else
     alias ll='ls -alF' \
         la='ls -A' \
-	l='ls' 
+        l='ls'
 fi
 
 if command -v nvim &> /dev/null ; then
