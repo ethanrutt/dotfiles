@@ -27,6 +27,17 @@ too bad about it.
 - removed some anime girls from `~/.config/fastfetch/logo/`
 - installed dotfiles
 - added `fcitx5` autostart in `~/.config/hypr/userprefs.conf`
+- installed `uwsm` and `libnewt`
+- changed all `exec` commands and `exec-once` to be `uwsm` managed
+```hyprlang
+# original
+exec-once = mycommand --arg1 --arg2
+bind = SUPER, E, exec, pcmanfm-qt.desktop
+# uwsm managed
+exec-once = uwsm app -- mycommand --arg1 --arg2
+bind = SUPER, E, exec, uwsm app -- pcmanfm-qt.desktop
+```
+- choose `Hyprland uwsm-managed` in display manager when logging in
 
 ## References
 - [HyDE](https://github.com/HyDE-Project/HyDE)
