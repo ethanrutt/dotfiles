@@ -50,11 +50,11 @@ if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
     check_installed discord
     check_installed bitwarden
     check_installed zsa-keymapp-bin
-    check_installed pacman fcitx5
-    check_installed pacman fcitx5-qt
-    check_installed pacman fcitx5-gtk
-    check_installed pacman fcitx5-configtool
-    check_installed pacman fcitx5-mozc
+    check_installed fcitx5
+    check_installed fcitx5-qt
+    check_installed fcitx5-gtk
+    check_installed fcitx5-configtool
+    check_installed fcitx5-mozc
     check_installed obsidian
 fi
 
