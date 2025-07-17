@@ -1,12 +1,6 @@
 #
 # aliases
 #
-alias q='exit' \
-	home='cd ~' \
-	..='cd ..' \
-	...='cd ../..' \
-	....='cd ../../..' \
-
 if command -v eza &> /dev/null ; then
     alias ll='eza -alF --icons auto' \
         la='eza -A' \

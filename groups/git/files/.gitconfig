@@ -1,6 +1,3 @@
-[user]
-	email = ethan.rutt2032@gmail.com
-	name = ethanrutt
 [core]
 	editor = nvim
 	pager = delta
@@ -16,16 +13,7 @@
 [pull]
 	rebase = false
 [alias]
-	a = add
-	r = restore
-	b = branch
+	br = branch
 	cm = commit -m
-	c = commit
-	cl = clone
-	co = checkout
 	discard = reset HEAD --hard
-	ps = push
-	pl = pull
-	s = status
-	d = diff
-	l = log
+	st = status
