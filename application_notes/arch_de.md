@@ -38,6 +38,7 @@ exec-once = uwsm app -- mycommand --arg1 --arg2
 bind = SUPER, E, exec, uwsm app -- pcmanfm-qt.desktop
 ```
 - choose `Hyprland uwsm-managed` in display manager when logging in
+- deleted suspend listener in `~/.config/hypr/hypridle.conf`
 
 ## References
 - [HyDE](https://github.com/HyDE-Project/HyDE)
