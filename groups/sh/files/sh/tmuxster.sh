@@ -126,38 +126,38 @@ function tmuxster {
         esac
     done
 
-    if [[ -z "$session_name" ]]; then
+    if [ -z "$session_name" ]; then
         sessions="$(tmux ls 2> /dev/null)"
 
-        if [[ $? -ne 0 ]]; then
+        if [ $? -ne 0 ]; then
             echo "Error: no tmux sessions exist" >&2
             return 1
         fi
 
         attach_session=$(echo "$sessions" | fzf | awk -F ': ' '{print $1}')
 
-        if [[ -z "${attach_session}" ]]; then
+        if [ -z "${attach_session}" ]; then
             echo "Error: couldn't find session" >&2
             return 1
         fi
 
         tmux a -t "${attach_session}"
     else
-        if [[ $use_fd ]]; then
-            if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
+        if [ $use_fd ]; then
+            if [ ! -z "$TMUXSTER_DEFAULT_DIR" ]; then
                 session_directory="$(fd . "$TMUXSTER_DEFAULT_DIR" -d 1 | fzf)"
             else
                 session_directory="$(fd | fzf)"
             fi
         else
-            if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
+            if [ ! -z "$TMUXSTER_DEFAULT_DIR" ]; then
                 session_directory="$(find "$TMUXSTER_DEFAULT_DIR" -maxdepth 1 | fzf)"
             else
                 session_directory="$(find . | fzf)"
             fi
         fi
 
-        if [[ -z "$session_directory" ]]; then
+        if [ -z "$session_directory" ]; then
             echo "Error: couldn't find new session directory" >&2
             return 1
         fi
