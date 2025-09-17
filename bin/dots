@@ -119,7 +119,16 @@ esac
 #
 if ! [[ -d "$DOTS_DIR" ]]; then
     echo -e "${BLUE}cloning repository${ENDCOLOR}"
-    git clone --recurse-submodules --quiet git@github.com:ethanrutt/dotfiles.git "$DOTS_DIR"
+    if ! git clone --recurse-submodules --quiet git@github.com:ethanrutt/dotfiles.git "$DOTS_DIR"; then
+        # if we don't have an ssh key, let's clone with https, remove
+        # obsidian_vaults, and change neovim-config submodule to https
+        # TODO: clean this up with constant variables for urls and paths
+        git clone --quiet https://github.com/ethanrutt/dotfiles.git "$DOTS_DIR"
+        pushd "$DOTS_DIR"
+        git config -f .gitmodules submodule.groups/nvim/files/neovim-config.url https://github.com/ethanrutt/neovim-config.git
+        git "$DOTS_DIR" submodule update --init groups/nvim/files/neovim-config
+        popd
+    fi
 else
     echo -e "${BLUE}updating repository${ENDCOLOR}"
     git -C "$DOTS_DIR" pull --recurse-submodules --quiet
@@ -159,8 +168,12 @@ fi
 
 if [[ $(systemd-detect-virt) == "none" ]] && [[ "$ID" == "arch" ]]; then
     source "$DOTS_DIR/groups/misc/misc_setup.sh"
-    source "$DOTS_DIR/groups/obsidian/obsidian_setup.sh"
     source "$DOTS_DIR/groups/wallpapers/wallpapers_setup.sh"
+
+    # we need an ssh key and the proper submodule for this since it's a private
+    # repo, but if I need my notes then I will probably be on a machine that
+    # will be around for a bit and it'll be worth adding an ssh key
+    source "$DOTS_DIR/groups/obsidian/obsidian_setup.sh"
 fi
 
 echo -e "${GREEN}everything is finished. running test${ENDCOLOR}"
