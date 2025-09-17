@@ -126,7 +126,7 @@ if ! [[ -d "$DOTS_DIR" ]]; then
         git clone --quiet https://github.com/ethanrutt/dotfiles.git "$DOTS_DIR"
         pushd "$DOTS_DIR"
         git config -f .gitmodules submodule.groups/nvim/files/neovim-config.url https://github.com/ethanrutt/neovim-config.git
-        git "$DOTS_DIR" submodule update --init groups/nvim/files/neovim-config
+        git submodule update --init groups/nvim/files/neovim-config
         popd
     fi
 else
