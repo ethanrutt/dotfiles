@@ -42,3 +42,44 @@ bind = SUPER, E, exec, uwsm app -- pcmanfm-qt.desktop
 
 ## References
 - [HyDE](https://github.com/HyDE-Project/HyDE)
+
+# Another Switch
+After using HyDE for a while, I have decided to move once again to [Omarchy](https://omarchy.org/)
+
+The main reason for doing this is that hyde had a screen issue where after
+having my computer on for a while, the screen would eventually start black
+screening for about a minute every 5 minutes unless I reboot.
+
+I also think Omachy is a more feature rich system
+
+## What I did on most recent arch reinstall
+- Install Omarchy iso
+- Install dotfiles
+- Map some new keybindings (in `~/.config/hypr/bindings.conf` under the "overwrite existing keybinds" section)
+
+### New Keybindings
+
+```hypr
+unbind = SUPER, H
+unbind = SUPER SHIFT, H
+bind = SUPER, H, movefocus, l
+bind = SUPER SHIFT, H, movewindow, l
+
+unbind = SUPER, J
+unbind = SUPER SHIFT, J
+bind = SUPER, J, movefocus, d
+bind = SUPER SHIFT, J, movewindow, d
+
+unbind = SUPER, K
+unbind = SUPER SHIFT, K
+bind = SUPER, K, movefocus, u
+bind = SUPER SHIFT, K, movewindow, u
+
+unbind = SUPER, L
+unbind = SUPER SHIFT, L
+bind = SUPER, L, movefocus, r
+bind = SUPER SHIFT, L, movewindow, r
+
+bindd = SUPER SHIFT, S, Screenshot Region, exec, omarchy-cmd-screenshot
+bindd = SUPER, M, Toggle split, togglesplit
+```
