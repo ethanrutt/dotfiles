@@ -15,6 +15,5 @@
 [alias]
 	br = branch
 	cm = commit -m
-	discard = reset HEAD --hard
 	st = status
 	co = checkout
