@@ -26,4 +26,9 @@ if ! [[ -d "$HOME/.fzf-git" ]]; then
     git clone --quiet https://github.com/junegunn/fzf-git.sh.git "$HOME/.fzf-git"
 fi
 
+echo -e "${YELLOW}installing fzf-docker${ENDCOLOR}"
+if ! [[ -d "$HOME/.fzf-docker" ]]; then
+    git clone --quiet https://github.com/ethanrutt/fzf-docker.sh.git "$HOME/.fzf-docker"
+fi
+
 echo -e "${GREEN}fzf setup complete${ENDCOLOR}"

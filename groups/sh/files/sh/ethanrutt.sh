@@ -68,6 +68,7 @@ fi
 [ ! -z $ZSH_VERSION ] && command -v fzf &>/dev/null && source <(fzf --zsh)
 [ ! -z $BASH_VERSION ] && command -v fzf &>/dev/null && eval "$(fzf --bash)"
 [ -d "$HOME/.fzf-git" ] && source "$HOME/.fzf-git/fzf-git.sh"
+[ -d "$HOME/.fzf-docker" ] && source "$HOME/.fzf-docker/fzf-docker.sh"
 export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 
 if command -v bat &>/dev/null && command -v fzf &>/dev/null && command -v eza &> /dev/null && command -v fd &> /dev/null ; then
